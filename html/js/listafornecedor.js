@@ -1,5 +1,3 @@
-import { DataTables } from "./DataTables.js";
-
 const tabela = new $('#tabela').DataTable({
     paging: true,
     lengthChange: true,
@@ -9,7 +7,6 @@ const tabela = new $('#tabela').DataTable({
     autoWidth: false,
     responsive: true,
     stateSave: true,
-    select: true,
     processing: true,
     serverSide: true,
     language: {
@@ -17,8 +14,14 @@ const tabela = new $('#tabela').DataTable({
         searchPlaceholder: 'Digite sua pesquisa...'
     },
     ajax: {
-        url: '/usuario/listuser',
+        url: '/fornecedor/listafornecedor', // URL correta
         type: 'POST'
-    }
+    },
+    columns: [
+        { title: "Código" },
+        { title: "Nome completo" },
+        { title: "CPF" },
+        { title: "Email" },
+        { title: "Ações", orderable: false, searchable: false }
+    ]
 });
-DataTables.SetId('tabela').Post('/user/listuser');

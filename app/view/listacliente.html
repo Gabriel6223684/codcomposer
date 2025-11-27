@@ -10,15 +10,12 @@
             </a>
         </div>
         <div class="card-body">
-            <table class="table table-striped" id="tabelaClientes">
+            <table class="table table-striped" id="tabela">
                 <thead>
                     <tr>
                         <th>Código</th>
                         <th>Nome</th>
-                        <th>Sobrenome</th>
                         <th>CPF/CNPJ</th>
-                        <th>RG</th>
-                        <th>IE</th>
                         <th>Email</th>
                         <th>Senha</th>
                         <th>Ações</th>
@@ -43,10 +40,7 @@
         <form id="formEditar">
           <input type="hidden" id="editId">
           <div class="mb-3"><label>Nome</label><input type="text" id="editNome" class="form-control"></div>
-          <div class="mb-3"><label>Sobrenome</label><input type="text" id="editSobrenome" class="form-control"></div>
           <div class="mb-3"><label>CPF/CNPJ</label><input type="text" id="editCpfcnpj" class="form-control"></div>
-          <div class="mb-3"><label>RG</label><input type="text" id="editRg" class="form-control"></div>
-          <div class="mb-3"><label>IE</label><input type="text" id="editIe" class="form-control"></div>
           <div class="mb-3"><label>Email</label><input type="email" id="editEmail" class="form-control"></div>
           <div class="mb-3"><label>Senha</label><input type="password" id="editSenha" class="form-control"></div>
         </form>
@@ -76,81 +70,9 @@
   </div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
-    let clienteEditando = null;
-    let clienteExcluindo = null;
-    const tabelaBody = document.querySelector("#tabelaClientes tbody");
-    const modalEditar = new bootstrap.Modal(document.getElementById("modalEditar"));
-    const modalExcluir = new bootstrap.Modal(document.getElementById("modalExcluir"));
+{% endblock %}
 
-    function renderClientes() {
-        tabelaBody.innerHTML = "";
-        if (!clientes.length) {
-            tabelaBody.innerHTML = `<tr><td colspan="9" class="text-center">Nenhum cliente cadastrado.</td></tr>`;
-            return;
-        }
-        clientes.forEach(c => {
-            tabelaBody.innerHTML += `
-                <tr>
-                    <td>${c.id}</td>
-                    <td>${c.nome}</td>
-                    <td>${c.sobrenome}</td>
-                    <td>${c.cpfcnpj || "-"}</td>
-                    <td>${c.rg || "-"}</td>
-                    <td>${c.ie || "-"}</td>
-                    <td>${c.email}</td>
-                    <td>${c.senha}</td>
-                    <td>
-                        <button class="btn btn-outline-info btn-sm me-2" onclick="abrirEditar(${c.id})"><i class="fa-solid fa-pen"></i></button>
-                        <button class="btn btn-outline-danger btn-sm" onclick="abrirExcluir(${c.id})"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>`;
-        });
-    }
-
-    window.abrirEditar = (id) => {
-        clienteEditando = clientes.find(c => c.id === id);
-        if (!clienteEditando) return;
-        document.getElementById("editId").value = clienteEditando.id;
-        document.getElementById("editNome").value = clienteEditando.nome;
-        document.getElementById("editSobrenome").value = clienteEditando.sobrenome;
-        document.getElementById("editCpfcnpj").value = clienteEditando.cpfcnpj || "";
-        document.getElementById("editRg").value = clienteEditando.rg || "";
-        document.getElementById("editIe").value = clienteEditando.ie || "";
-        document.getElementById("editEmail").value = clienteEditando.email;
-        document.getElementById("editSenha").value = clienteEditando.senha;
-        modalEditar.show();
-    };
-
-    document.getElementById("salvarEdicao").addEventListener("click", () => {
-        if (!clienteEditando) return;
-        clienteEditando.nome = document.getElementById("editNome").value.trim();
-        clienteEditando.sobrenome = document.getElementById("editSobrenome").value.trim();
-        clienteEditando.cpfcnpj = document.getElementById("editCpfcnpj").value.trim();
-        clienteEditando.rg = document.getElementById("editRg").value.trim();
-        clienteEditando.ie = document.getElementById("editIe").value.trim();
-        clienteEditando.email = document.getElementById("editEmail").value.trim();
-        clienteEditando.senha = document.getElementById("editSenha").value.trim();
-        localStorage.setItem("clientes", JSON.stringify(clientes));
-        renderClientes();
-        modalEditar.hide();
-    });
-
-    window.abrirExcluir = (id) => {
-        clienteExcluindo = id;
-        modalExcluir.show();
-    };
-
-    document.getElementById("confirmarExclusao").addEventListener("click", () => {
-        clientes = clientes.filter(c => c.id !== clienteExcluindo);
-        localStorage.setItem("clientes", JSON.stringify(clientes));
-        renderClientes();
-        modalExcluir.hide();
-    });
-
-    renderClientes();
-});
-</script>
+{% block script %}
+{% include "script.html"%}
+<script defer type="module" src="/js/listacliente.js"></script>
 {% endblock %}

@@ -3,8 +3,6 @@
 namespace app\database\builder;
 
 use app\database\Connection;
-use PDOException;
-use Exception;
 
 class DeleteQuery
 {
@@ -19,51 +17,41 @@ class DeleteQuery
         return $self;
     }
 
-    public function where(string $field, string $operator, string|int $value, ?string $logic = null): self
-    {
-        $placeHolder = $field;
+    public function where(string $field, string $operator, string|int $value, string $logic = 'AND'): self
+{
+    $placeholder = str_contains($field, '.') ? substr($field, strpos($field, '.') + 1) : $field;
+    if (!empty($this->where)) $this->where[] = $logic;
+    $this->where[] = "{$field} {$operator} :{$placeholder}";
+    $this->binds[$placeholder] = $value;
+    return $this;
+}
 
-        // Se tiver "tabela.campo", usa só o nome do campo no placeholder
-        if (str_contains($placeHolder, '.')) {
-            $placeHolder = substr($field, strpos($field, '.') + 1);
-        }
+public function delete(): bool
+{
+    $query = $this->createQuery();
+    $connection = Connection::connection();
+    $stmt = $connection->prepare($query);
+    return $stmt->execute($this->binds);
+}
 
-        $this->where[] = "{$field} {$operator} :{$placeHolder}" . ($logic ? " {$logic}" : "");
-        $this->binds[$placeHolder] = $value;
 
-        return $this;
-    }
 
     private function createQuery(): string
     {
-        if (empty($this->table)) {
-            throw new Exception("É necessário definir uma tabela antes de executar o delete.");
-        }
-
         $query = "DELETE FROM {$this->table}";
 
-        if (count($this->where) > 0) {
+        if (!empty($this->where)) {
             $query .= ' WHERE ' . implode(' ', $this->where);
         }
 
         return $query;
     }
 
+
     public function executeQuery(string $query): bool
     {
         $connection = Connection::connection();
         $prepare = $connection->prepare($query);
         return $prepare->execute($this->binds ?? []);
-    }
-
-    public function delete(): bool
-    {
-        $query = $this->createQuery();
-
-        try {
-            return $this->executeQuery($query);
-        } catch (PDOException $e) {
-            throw new Exception("Erro ao executar DELETE: " . $e->getMessage());
-        }
     }
 }

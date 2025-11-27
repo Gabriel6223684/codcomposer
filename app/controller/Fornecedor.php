@@ -5,24 +5,29 @@ namespace app\controller;
 use app\database\builder\InsertQuery;
 use app\database\builder\SelectQuery;
 
-class Cliente extends Base
+class Fornecedor extends Base
 {
     public function lista($request, $response)
     {
         $dadosTemplate = [
-            'titulo' => 'Lista de cliente'
+            'titulo' => 'Lista de fornecedor'
         ];
-
-        $response = $this->getTwig()->render(
-            $response,
-            $this->setView('listacliente'),
-            $dadosTemplate
-        );
-
-        return $response->withHeader('Content-Type', 'text/html')->withStatus(200);
+        return $this->getTwig()
+            ->render($response, $this->setView('listafornecedor'), $dadosTemplate)
+            ->withHeader('Content-Type', 'text/html')
+            ->withStatus(200);
     }
-
-    public function listacliente($request, $response)
+    public function cadastro($request, $response)
+    {
+        $dadosTemplate = [
+            'titulo' => 'Cadastro de fornecedor'
+        ];
+        return $this->getTwig()
+            ->render($response, $this->setView('fornecedor'), $dadosTemplate)
+            ->withHeader('Content-Type', 'text/html')
+            ->withStatus(200);
+    }
+    public function listafornecedor($request, $response)
     {
         #Captura todas a variaveis de forma mais segura VARIAVEIS POST.
         $form = $request->getParsedBody();
@@ -36,28 +41,28 @@ class Cliente extends Base
         $length = $form['length'];
         $fields = [
             0 => 'id',
-            1 => 'nome',
+            1 => 'nome_completo',
             2 => 'email',
-            3 => 'cpf_cnpj'
+            3 => 'cpf'
         ];
         #Capturamos o nome do capo a ser ordenado.
         $orderField = $fields[$order];
         #O termo pesquisado
         $term = $form['search']['value'];
         $query = SelectQuery::select()
-            ->from('cliente');
+            ->from('fornecedor');
         if (!is_null($term) && ($term !== '')) {
-            $query->where('cliente.nome', 'ilike', "%{$term}%", 'or')
-                ->where('cliente.email', 'ilike', "%{$term}%", 'or')
-                ->where('cliente.cpf_cnpj', 'ilike', "%{$term}%");
+            $query->where('fornecedor.nome', 'ilike', "%{$term}%", 'or')
+                ->where('fornecedor.email', 'ilike', "%{$term}%", 'or')
+                ->where('fornecedor.cpf_cnpj', 'ilike', "%{$term}%");
         }
-        $cliente = $query
+        $fornecedor = $query
             ->order($orderField, $orderType)
             ->limit($length, $start)
             ->fetchAll();
-        $clienteData = [];
-        foreach ($cliente as $key => $value) {
-            $clienteData[$key] = [
+        $fornecedorData = [];
+        foreach ($fornecedor as $key => $value) {
+            $fornecedorData[$key] = [
                 $value['id'],
                 $value['nome'],
                 $value['cpf_cnpj'],
@@ -68,9 +73,9 @@ class Cliente extends Base
         }
         $data = [
             'status' => true,
-            'recordsTotal' => count($cliente),
-            'recordsFiltered' => count($cliente),
-            'data' => $clienteData
+            'recordsTotal' => count($fornecedor),
+            'recordsFiltered' => count($fornecedor),
+            'data' => $fornecedorData
         ];
         $payload = json_encode($data);
 
@@ -81,65 +86,32 @@ class Cliente extends Base
             ->withStatus(200);
     }
 
-    public function cadastro($request, $response)
-    {
-        $dadosTemplate = [
-            'titulo' => 'Cadastro de cliente'
-        ];
-
-        $response = $this->getTwig()->render(
-            $response,
-            $this->setView('cliente'),
-            $dadosTemplate
-        );
-
-        return $response->withHeader('Content-Type', 'text/html')->withStatus(200);
-    }
-
     public function insert($request, $response)
     {
         $form = $request->getParsedBody();
-
         $dados = [
-            'nome_completo' => $form['nome'] ?? '',
-            'cpf'           => $form['cpfcnpj'] ?? '',
-            'email'         => $form['email'] ?? '',
-            'senha'         => password_hash($form['senha'] ?? '', PASSWORD_DEFAULT)
+            'nome'          => $form['nome'],
+            'cpf_cnpj'      => $form['cpf_cnpj'],
+            'email'         => $form['email']
         ];
-
-        // Validação
-        if (!$dados['nome_completo'] || !$dados['cpf'] || !$dados['email'] || !$form['senha']) {
-            $response->getBody()->write(json_encode([
-                'status' => false,
-                'msg' => 'Todos os campos são obrigatórios'
-            ]));
-            return $response->withHeader('Content-Type', 'application/json')->withStatus(400);
-        }
-
         try {
-            $ok = InsertQuery::table('cliente')->save($dados);
-            $id = InsertQuery::table('cliente')->getLastInsertId();
-
+            $ok = InsertQuery::table('fornecedor')->save($dados);
             $response->getBody()->write(json_encode([
                 'status' => $ok,
-                'msg'    => $ok ? 'Cliente salvo com sucesso' : 'Falha ao inserir',
-                'data' => [
-                    'id' => $id,
-                    'nome' => $form['nome'],
-                    'cpfcnpj' => $form['cpfcnpj'],
-                    'email' => $form['email']
-                ]
+                'msg' => $ok ? 'Fornecedor salvo com sucesso' : 'Falha ao inserir'
             ]));
+
             return $response->withHeader('Content-Type', 'application/json');
         } catch (\Exception $e) {
+
             $response->getBody()->write(json_encode([
                 'status' => false,
                 'msg' => $e->getMessage()
             ]));
+
             return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
         }
     }
-
     public function editar($request, $response)
     {
         $form = $request->getParsedBody();
@@ -166,14 +138,14 @@ class Cliente extends Base
         }
 
         try {
-            $ok = \app\database\builder\UpdateQuery::table('cliente')
+            $ok = \app\database\builder\UpdateQuery::table('fornecedor')
                 ->set($dados)
                 ->where('id', '=', $id)
                 ->update();
 
             $response->getBody()->write(json_encode([
                 'status' => $ok,
-                'msg' => $ok ? 'Cliente atualizado' : 'Nenhuma alteração feita'
+                'msg' => $ok ? 'Fornecedor atualizado' : 'Nenhuma alteração feita'
             ]));
             return $response->withHeader('Content-Type', 'application/json');
         } catch (\Exception $e) {
@@ -190,13 +162,13 @@ class Cliente extends Base
         }
 
         try {
-            $ok = \app\database\builder\DeleteQuery::table('cliente')
+            $ok = \app\database\builder\DeleteQuery::table('fornecedor')
                 ->where('id', '=', $id)
                 ->delete();
 
             $response->getBody()->write(json_encode([
                 'status' => $ok,
-                'msg' => $ok ? 'Cliente excluído' : 'Nenhum cliente encontrado'
+                'msg' => $ok ? 'Fornecedor excluído' : 'Nenhum fornecedor encontrado'
             ]));
 
             return $response->withHeader('Content-Type', 'application/json');
