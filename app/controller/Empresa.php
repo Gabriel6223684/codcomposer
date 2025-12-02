@@ -120,7 +120,6 @@ class Empresa extends Base
         $nome = $form['nome'] ?? null;
         $cpf_cnpj = $form['cpf_cnpj'] ?? null;
         $email = $form['email'] ?? null;
-        $senha = $form['senha'] ?? null;
 
         if (!$id || !$nome || !$cpf_cnpj || !$email) {
             $response->getBody()->write(json_encode(['status' => false, 'msg' => 'Campos obrigatórios faltando']));

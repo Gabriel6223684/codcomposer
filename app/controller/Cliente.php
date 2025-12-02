@@ -50,7 +50,7 @@ class Cliente extends Base
         if (!is_null($term) && ($term !== '')) {
             $query->where('cliente.nome', 'ilike', "%{$term}%", 'or')
                 ->where('cliente.email', 'ilike', "%{$term}%", 'or')
-                ->where('cliente.cpf_cnpj', 'ilike', "%{$term}%")
+                ->where('cliente.cpf_cnpj', 'ilike', "%{$term}%", 'or')
                 ->where('cliente.senha', 'ilike', "%{$term}");
         }
         $cliente = $query

@@ -1,23 +1,18 @@
 import { Requests } from "./Requests.js";
 import { Validate } from "./validate.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+const Cadastrar = document.getElementById('cadastrar');
 
-    const btn = document.getElementById('cadastrar');
-    console.log("Botão encontrado? ", btn);
+// Cadastrar cliente
+Cadastrar.addEventListener('click', async () => {
+    const response = await Requests.SetForm('form').Post('/cliente/insert');
+    console.log(response);
 
-    btn.addEventListener('click', async () => {
-        
-        const valido = Validate.SetForm('form').Validate();
-        if (!valido) return;
-
-        const response = await Requests.SetForm('form').Post('/cliente/insert');
-
-        if (response.status) {
-            window.location.href = "/cliente/lista";
-        }
-    });
-
+    if (response.status) {
+        alert("Cliente cadastrado com sucesso!");
+    } else {
+        alert(response.msg);
+    }
 });
 
 // corrige CPF

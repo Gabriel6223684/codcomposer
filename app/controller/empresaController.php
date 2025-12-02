@@ -35,7 +35,6 @@ switch($action) {
         $nome = trim($_POST['nome'] ?? '');
         $cpf_cnpj = trim($_POST['cpf_cnpj'] ?? '');
         $email = trim($_POST['email'] ?? '');
-        $senha = $_POST['senha'] ?? '';
 
         // Validação simples
         if (!$nome || !$cpf_cnpj || !$email || !$senha) {
@@ -50,7 +49,7 @@ switch($action) {
         // Hash da senha
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-        $stmt = $pdo->prepare("INSERT INTO empresa (nome, cpf_cnpj, email, senha) VALUES (?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO empresa (nome, cpf_cnpj, email, senha) VALUES (nome, cpf_cnpj, email, senha)");
         $stmt->execute([$nome, $cpf_cnpj, $email, $senhaHash]);
         echo json_encode(["success" => true]);
         break;
@@ -60,8 +59,7 @@ switch($action) {
         $nome = trim($_POST['nome'] ?? '');
         $cpf_cnpj = trim($_POST['cpf_cnpj'] ?? '');
         $email = trim($_POST['email'] ?? '');
-        $senha = $_POST['senha'] ?? '';
-
+        
         if (!$id || !$nome || !$cpfcnpj || !$email) {
             echo json_encode(["error" => "ID, nome, CPF_CNPJ e email são obrigatórios"]);
             exit;

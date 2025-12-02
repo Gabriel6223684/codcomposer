@@ -7,7 +7,7 @@ const Cadastrar = document.getElementById('cadastrar');
 $('#cpfcnpj').inputmask({ 'mask': ['999.999.999-99', '99.999.999/9999-99'] });
 $('#telefone').inputmask({ 'mask': ['(99) 99999-9999'] });
 
-// Cadastrar fornecedor
+// Cadastrar cliente
 Cadastrar.addEventListener('click', async () => {
     const response = await Requests.SetForm('formCadastro').Post('/empresa/insert');
     console.log(response);

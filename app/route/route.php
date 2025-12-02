@@ -5,6 +5,7 @@ use app\controller\Home;
 use app\controller\Cliente;
 use Slim\Routing\RouteCollectorProxy;
 use app\controller\Fornecedor;
+use app\controller\Empresa;
 
 $app->get('/', Home::class . ':home');
 
@@ -23,18 +24,15 @@ $app->group('/cliente', function (RouteCollectorProxy $group) {
     $group->post('/insert', Cliente::class . ':insert');
 });
 
-$app->post('/usuario/editar', \app\controller\User::class . ':editar');
-$app->delete('/usuario/excluir/{id}', \app\controller\User::class . ':excluir');
-
-$app->post('/cliente/editar', \app\controller\Cliente::class . ':editar');
-$app->delete('/cliente/excluir/{id}', \app\controller\Cliente::class . ':excluir');
-
-$app->post('/fornecedor/editar', \app\controller\Fornecedor::class . ':editar');
-$app->delete('/fornecedor/excluir/{id}', \app\controller\Fornecedor::class . ':excluir');
-
 $app->group('/fornecedor', function (RouteCollectorProxy $group) {
     $group->get('/lista', Fornecedor::class . ':lista');
     $group->get('/cadastro', Fornecedor::class . ':cadastro');
     $group->post('/listafornecedor', Fornecedor::class . ':listafornecedor');
     $group->post('/insert', Fornecedor::class . ':insert');
+});
+$app->group('/empresa', function (RouteCollectorProxy $group) {
+    $group->get('/lista', Empresa::class . ':lista');
+    $group->get('/cadastro', Empresa::class . ':cadastro');
+    $group->post('/listaempresa', Empresa::class . ':listaempresa');
+    $group->post('/insert', Empresa::class . ':insert');
 });
