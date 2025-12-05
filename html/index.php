@@ -1,6 +1,4 @@
 <?php
-echo 'oi';
-die;
 
 use Slim\Factory\AppFactory;
 
