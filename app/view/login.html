@@ -5,153 +5,123 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página de Login</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    {% include "css.html" %}
 </head>
 
 <body>
-    <div class="animated-bg">
-        <div class="grid-overlay"></div>
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
-    </div>
-
     <form id="form">
         <div class="login-container">
-            <div class="glow-effect"></div>
-            <div class="modal-header d-flex justify-content-between align-items-start p-0 mb-4" style="border:0;">
-                <h2 class="modal-title fw-bold text-center w-100 mt-2">
-                    <span class="text-gradient">LOGIN</span>
-                </h2>
+            <div class="modal-header d-flex justify-content-between align-items-start p-0 mb-3" style="border:0;">
+                <h2 class="modal-title fw-semibold text-center w-100 mt-2">Login</h2>
             </div>
-            <div class="form-floating mb-3 input-group-custom">
-                <input type="text" class="form-control glass-input" id="login" name="login" placeholder="" autofocus>
-                <label for="login">CPF · E-MAIL · CELULAR</label>
-                <div class="input-line"></div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="login" name="login" placeholder="" autofocus>
+                <label for="login">Informe o seu: CPF ou E-MAIL ou CELULAR *</label>
             </div>
-            <div class="form-floating mb-4 input-group-custom">
-                <input type="password" class="form-control glass-input" id="senha" name="senha" placeholder="">
-                <label for="senha">SENHA DE ACESSO</label>
-                <div class="input-line"></div>
+            <div class="form-floating mb-4">
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="">
+                <label for="senha">Informe sua senha de acesso *</label>
             </div>
             <div class="d-flex gap-2 mb-4">
-                <button id="Login" type="button" class="btn btn-primary flex-fill cyber-btn">
-                    <span>ENTRAR</span>
-                    <div class="btn-glow"></div>
-                </button>
+                <button id="Login" type="button" class="btn btn-primary flex-fill">Login</button>
             </div>
             <div class="d-flex gap-2">
-                <button class="btn btn-outline-secondary flex-fill glass-btn" type="button" data-bs-toggle="modal"
+                <button class="btn btn-outline-secondary flex-fill" type="button" data-bs-toggle="modal"
                     data-bs-target="#pre-cadastro">
-                    PRÉ-CADASTRO
+                    Pre-Cadastro
                 </button>
-                <button class="btn btn-outline-secondary flex-fill glass-btn" type="button" data-bs-toggle="modal"
+                <button class="btn btn-outline-secondary flex-fill" type="button" data-bs-toggle="modal"
                     data-bs-target="#recuperarSenha">
-                    RECUPERAR SENHA
+                    Recuperar Senha
                 </button>
             </div>
         </div>
-
         <div class="modal fade" id="pre-cadastro" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content futuristic-modal">
-                    <div class="glow-effect"></div>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title fw-bold"><span class="text-gradient">PRÉ-CADASTRO</span></h5>
-                        <button class="btn-close glass-close" data-bs-dismiss="modal"></button>
+                        <h5 class="modal-title fw-semibold">Pre-Cadastro</h5>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="form-floating mb-3 input-group-custom">
-                                    <input type="text" class="form-control glass-input" id="nome" name="nome" placeholder="">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="">
                                     <label for="nome">Nome</label>
-                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-3 input-group-custom">
-                                    <input type="text" class="form-control glass-input" id="sobrenome" name="sobrenome" placeholder="">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="sobrenome" name="sobrenome"
+                                        placeholder="">
                                     <label for="sobrenome">Sobrenome</label>
-                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-3 input-group-custom">
-                                    <input type="text" class="form-control glass-input" id="cpf" name="cpf" placeholder="">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="">
                                     <label for="cpf">CPF</label>
-                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-3 input-group-custom">
-                                    <input type="text" class="form-control glass-input" id="celular" name="celular" placeholder="">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="celular" name="celular" placeholder="">
                                     <label for="celular">Telefone</label>
-                                    <div class="input-line"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="form-floating mb-3 input-group-custom">
-                                    <input type="text" class="form-control glass-input" id="whatsapp" name="whatsapp" placeholder="">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="whatsapp" name="whatsapp"
+                                        placeholder="">
                                     <label for="whatsapp">Whatsapp</label>
-                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-3 input-group-custom">
-                                    <input type="email" class="form-control glass-input" id="email" name="email" placeholder="">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="">
                                     <label for="email">Email</label>
-                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-3 input-group-custom">
-                                    <input type="text" class="form-control glass-input" id="rg" name="rg" placeholder="">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="rg" name="rg" placeholder="">
                                     <label for="rg">RG</label>
-                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-2 input-group-custom">
-                                    <input type="password" class="form-control glass-input" id="senhaCadastro" name="senhaCadastro" placeholder="">
+                                <div class="form-floating mb-2">
+                                    <input type="password" class="form-control" id="senhaCadastro" name="senhaCadastro"
+                                        placeholder="">
                                     <label for="senhaCadastro">Senha</label>
-                                    <div class="input-line"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer" style="border:0;">
-                        <button type="button" id="preCadastro" class="btn btn-outline-primary flex-fill cyber-btn-outline">
-                            <span>ENVIAR</span>
+                    <div class="modal-footer">
+                        <button type="button" id="preCadastro" class="btn btn-outline-primary flex-fill">
+                            Enviar
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="modal fade" id="recuperarSenha" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content futuristic-modal">
-                    <div class="glow-effect"></div>
+                <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title fw-bold"><span class="text-gradient">RECUPERAR SENHA</span></h5>
-                        <button class="btn-close glass-close" data-bs-dismiss="modal"></button>
+                        <h5 class="modal-title fw-semibold">Recuperar Senha</h5>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-floating mb-3 input-group-custom">
-                            <input type="text" class="form-control glass-input" id="identificador" placeholder="">
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control" id="identificador" placeholder="">
                             <label for="identificador">Identificador</label>
-                            <div class="input-line"></div>
                         </div>
-                        <div class="form-floating mb-3 input-group-custom">
-                            <input type="password" class="form-control glass-input" id="senhaRec" placeholder="">
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control" id="senhaRec" placeholder="">
                             <label for="senhaRec">Nova Senha</label>
-                            <div class="input-line"></div>
                         </div>
-                        <div class="form-floating mb-2 input-group-custom">
-                            <input type="password" class="form-control glass-input" id="senhaRecConfirm" placeholder="">
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control" id="senhaRecConfirm" placeholder="">
                             <label for="senhaRecConfirm">Confirmar Nova Senha</label>
-                            <div class="input-line"></div>
                         </div>
                     </div>
-                    <div class="modal-footer" style="border:0;">
-                        <button class="btn btn-outline-primary flex-fill cyber-btn-outline">
-                            <span>ENVIAR</span>
-                        </button>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-primary flex-fill">Enviar</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
@@ -212,6 +182,7 @@
                 opacity: 0.8;
                 transform: scale(1);
             }
+
             100% {
                 opacity: 0;
                 transform: scale(0.3);
@@ -245,7 +216,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -253,8 +224,13 @@
         }
 
         @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
         }
 
         .gradient-orb {
@@ -293,9 +269,19 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-50px, 50px) scale(0.9); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-50px, 50px) scale(0.9);
+            }
         }
 
         .login-container {
@@ -304,7 +290,7 @@
             background: rgba(10, 14, 39, 0.75);
             border-radius: 24px;
             border: 1px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 
+            box-shadow:
                 0 8px 32px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1),
                 0 0 80px rgba(0, 255, 255, 0.15);
@@ -330,14 +316,29 @@
         }
 
         @keyframes glowRotate {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         @keyframes glowPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
         }
 
         @keyframes slideIn {
@@ -345,6 +346,7 @@
                 opacity: 0;
                 transform: translateY(30px) scale(0.95);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -372,17 +374,15 @@
             inset: -2px;
             border-radius: 14px;
             padding: 2px;
-            background: linear-gradient(
-                45deg,
-                #ff0000,
-                #ff7f00,
-                #ffff00,
-                #00ff00,
-                #0000ff,
-                #4b0082,
-                #9400d3,
-                #ff0000
-            );
+            background: linear-gradient(45deg,
+                    #ff0000,
+                    #ff7f00,
+                    #ffff00,
+                    #00ff00,
+                    #0000ff,
+                    #4b0082,
+                    #9400d3,
+                    #ff0000);
             background-size: 400% 400%;
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -398,9 +398,11 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
@@ -438,15 +440,15 @@
             color: rgba(255, 255, 255, 0.4);
         }
 
-        .form-floating > label {
+        .form-floating>label {
             color: rgba(255, 255, 255, 0.6);
             font-weight: 500;
             letter-spacing: 1px;
             font-size: 0.85rem;
         }
 
-        .form-floating > .form-control:focus ~ label,
-        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        .form-floating>.form-control:focus~label,
+        .form-floating>.form-control:not(:placeholder-shown)~label {
             color: #00f5ff;
         }
 
@@ -461,7 +463,7 @@
             border-radius: 2px;
         }
 
-        .glass-input:focus ~ .input-line {
+        .glass-input:focus~.input-line {
             width: 100%;
         }
 
@@ -485,17 +487,15 @@
             inset: -3px;
             border-radius: 14px;
             padding: 3px;
-            background: linear-gradient(
-                45deg,
-                #ff0000,
-                #ff7f00,
-                #ffff00,
-                #00ff00,
-                #0000ff,
-                #4b0082,
-                #9400d3,
-                #ff0000
-            );
+            background: linear-gradient(45deg,
+                    #ff0000,
+                    #ff7f00,
+                    #ffff00,
+                    #00ff00,
+                    #0000ff,
+                    #4b0082,
+                    #9400d3,
+                    #ff0000);
             background-size: 400% 400%;
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -528,8 +528,17 @@
         }
 
         @keyframes btnGlow {
-            0%, 100% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1); opacity: 1; }
+
+            0%,
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .glass-btn {
@@ -551,17 +560,15 @@
             inset: -2px;
             border-radius: 14px;
             padding: 2px;
-            background: linear-gradient(
-                45deg,
-                #ff0000,
-                #ff7f00,
-                #ffff00,
-                #00ff00,
-                #0000ff,
-                #4b0082,
-                #9400d3,
-                #ff0000
-            );
+            background: linear-gradient(45deg,
+                    #ff0000,
+                    #ff7f00,
+                    #ffff00,
+                    #00ff00,
+                    #0000ff,
+                    #4b0082,
+                    #9400d3,
+                    #ff0000);
             background-size: 400% 400%;
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -641,17 +648,15 @@
             inset: -3px;
             border-radius: 14px;
             padding: 3px;
-            background: linear-gradient(
-                45deg,
-                #ff0000,
-                #ff7f00,
-                #ffff00,
-                #00ff00,
-                #0000ff,
-                #4b0082,
-                #9400d3,
-                #ff0000
-            );
+            background: linear-gradient(45deg,
+                    #ff0000,
+                    #ff7f00,
+                    #ffff00,
+                    #00ff00,
+                    #0000ff,
+                    #4b0082,
+                    #9400d3,
+                    #ff0000);
             background-size: 400% 400%;
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -710,7 +715,7 @@
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
         // Cursor personalizado
         const cursor = document.createElement('div');
@@ -765,19 +770,21 @@
 
         // Efeito hover em elementos clicáveis
         const interactiveElements = document.querySelectorAll('button, input, a, .btn-close');
-        
+
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursor.classList.add('hover');
                 cursorDot.classList.add('hover');
             });
-            
+
             el.addEventListener('mouseleave', () => {
                 cursor.classList.remove('hover');
                 cursorDot.classList.remove('hover');
             });
         });
     </script>
+    {% include "script.html" %}
+    <script defer type="module" aria-modal="true" src="/js/login.js"></script>
 </body>
 
 </html>
