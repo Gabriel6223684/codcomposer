@@ -6,19 +6,22 @@ use app\controller\Cliente;
 use app\controller\Fornecedor;
 use app\controller\Empresa;
 use app\controller\Login;
+use app\middleware\Middleware;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->get('/', Home::class . ':home');
-
-$app->get('/home', Home::class . ':home');
 
 $app->get('/login', Login::class . ':login');
 
+$app->get('/', Home::class . ':home')->add(Middleware::authentication());
+$app->get('/home', Home::class . ':home')->add(Middleware::authentication());
+
 $app->group('/usuario', function (RouteCollectorProxy $group) {
-    $group->get('/lista', User::class . ':lista');
-    $group->get('/cadastro', User::class . ':cadastro');
+    $group->get('/lista', User::class . ':lista')->add(Middleware::authentication());
+    $group->get('/cadastro', User::class . ':cadastro')->add(Middleware::authentication());
     $group->post('/listuser', User::class . ':listuser');
     $group->post('/insert', User::class . ':insert');
+    $group->get('/alterar/{id}', User::class . ':alterar');
+    $group->post('/update', User::class . ':update');
 });
 
 $app->group('/cliente', function (RouteCollectorProxy $group) {
@@ -43,6 +46,6 @@ $app->group('/empresa', function (RouteCollectorProxy $group) {
 });
 
 $app->group('/login', function (RouteCollectorProxy $group) {
-     $group->post('/precadastro', Login::class . ':precadastro');
-     $group->post('/autenticar', Login::class . ':autenticar');
+    $group->post('/precadastro', Login::class . ':precadastro');
+    $group->post('/autenticar', Login::class . ':autenticar');
 });

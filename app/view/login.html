@@ -5,246 +5,779 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página de Login</title>
-    {% include "css.html" %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
+    <div class="animated-bg">
+        <div class="grid-overlay"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
     <form id="form">
         <div class="login-container">
-            <div class="modal-header d-flex justify-content-between align-items-start p-0 mb-3" style="border:0;">
-                <h2 class="modal-title fw-semibold text-center w-100 mt-2">Login</h2>
+            <div class="glow-effect"></div>
+            <div class="modal-header d-flex justify-content-between align-items-start p-0 mb-4" style="border:0;">
+                <h2 class="modal-title fw-bold text-center w-100 mt-2">
+                    <span class="text-gradient">LOGIN</span>
+                </h2>
             </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="login" name="login" placeholder="" autofocus>
-                <label for="login">Informe o seu: CPF ou E-MAIL ou CELULAR *</label>
+            <div class="form-floating mb-3 input-group-custom">
+                <input type="text" class="form-control glass-input" id="login" name="login" placeholder="" autofocus>
+                <label for="login">CPF · E-MAIL · CELULAR</label>
+                <div class="input-line"></div>
             </div>
-            <div class="form-floating mb-4">
-                <input type="password" class="form-control" id="senha" name="senha" placeholder="">
-                <label for="senha">Informe sua senha de acesso *</label>
+            <div class="form-floating mb-4 input-group-custom">
+                <input type="password" class="form-control glass-input" id="senha" name="senha" placeholder="">
+                <label for="senha">SENHA DE ACESSO</label>
+                <div class="input-line"></div>
             </div>
             <div class="d-flex gap-2 mb-4">
-                <button id="Login" type="button" class="btn btn-primary flex-fill">Login</button>
+                <button id="Login" type="button" class="btn btn-primary flex-fill cyber-btn">
+                    <span>ENTRAR</span>
+                    <div class="btn-glow"></div>
+                </button>
             </div>
             <div class="d-flex gap-2">
-                <button class="btn btn-outline-secondary flex-fill" type="button" data-bs-toggle="modal"
+                <button class="btn btn-outline-secondary flex-fill glass-btn" type="button" data-bs-toggle="modal"
                     data-bs-target="#pre-cadastro">
-                    Pre-Cadastro
+                    PRÉ-CADASTRO
                 </button>
-                <button class="btn btn-outline-secondary flex-fill" type="button" data-bs-toggle="modal"
+                <button class="btn btn-outline-secondary flex-fill glass-btn" type="button" data-bs-toggle="modal"
                     data-bs-target="#recuperarSenha">
-                    Recuperar Senha
+                    RECUPERAR SENHA
                 </button>
             </div>
         </div>
+
         <div class="modal fade" id="pre-cadastro" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content futuristic-modal">
+                    <div class="glow-effect"></div>
                     <div class="modal-header">
-                        <h5 class="modal-title fw-semibold">Pre-Cadastro</h5>
-                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                        <h5 class="modal-title fw-bold"><span class="text-gradient">PRÉ-CADASTRO</span></h5>
+                        <button class="btn-close glass-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="">
+                                <div class="form-floating mb-3 input-group-custom">
+                                    <input type="text" class="form-control glass-input" id="nome" name="nome" placeholder="">
                                     <label for="nome">Nome</label>
+                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="sobrenome" name="sobrenome"
-                                        placeholder="">
+                                <div class="form-floating mb-3 input-group-custom">
+                                    <input type="text" class="form-control glass-input" id="sobrenome" name="sobrenome" placeholder="">
                                     <label for="sobrenome">Sobrenome</label>
+                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="">
+                                <div class="form-floating mb-3 input-group-custom">
+                                    <input type="text" class="form-control glass-input" id="cpf" name="cpf" placeholder="">
                                     <label for="cpf">CPF</label>
+                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="celular" name="celular" placeholder="">
+                                <div class="form-floating mb-3 input-group-custom">
+                                    <input type="text" class="form-control glass-input" id="celular" name="celular" placeholder="">
                                     <label for="celular">Telefone</label>
+                                    <div class="input-line"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="whatsapp" name="whatsapp"
-                                        placeholder="">
+                                <div class="form-floating mb-3 input-group-custom">
+                                    <input type="text" class="form-control glass-input" id="whatsapp" name="whatsapp" placeholder="">
                                     <label for="whatsapp">Whatsapp</label>
+                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="">
+                                <div class="form-floating mb-3 input-group-custom">
+                                    <input type="email" class="form-control glass-input" id="email" name="email" placeholder="">
                                     <label for="email">Email</label>
+                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="rg" name="rg" placeholder="">
+                                <div class="form-floating mb-3 input-group-custom">
+                                    <input type="text" class="form-control glass-input" id="rg" name="rg" placeholder="">
                                     <label for="rg">RG</label>
+                                    <div class="input-line"></div>
                                 </div>
-                                <div class="form-floating mb-2">
-                                    <input type="password" class="form-control" id="senhaCadastro" name="senhaCadastro"
-                                        placeholder="">
+                                <div class="form-floating mb-2 input-group-custom">
+                                    <input type="password" class="form-control glass-input" id="senhaCadastro" name="senhaCadastro" placeholder="">
                                     <label for="senhaCadastro">Senha</label>
+                                    <div class="input-line"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" id="preCadastro" class="btn btn-outline-primary flex-fill">
-                            Enviar
+                    <div class="modal-footer" style="border:0;">
+                        <button type="button" id="preCadastro" class="btn btn-outline-primary flex-fill cyber-btn-outline">
+                            <span>ENVIAR</span>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="recuperarSenha" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+                <div class="modal-content futuristic-modal">
+                    <div class="glow-effect"></div>
                     <div class="modal-header">
-                        <h5 class="modal-title fw-semibold">Recuperar Senha</h5>
-                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                        <h5 class="modal-title fw-bold"><span class="text-gradient">RECUPERAR SENHA</span></h5>
+                        <button class="btn-close glass-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-floating mb-2">
-                            <input type="password" class="form-control" id="identificador" placeholder="">
+                        <div class="form-floating mb-3 input-group-custom">
+                            <input type="text" class="form-control glass-input" id="identificador" placeholder="">
                             <label for="identificador">Identificador</label>
+                            <div class="input-line"></div>
                         </div>
-                        <div class="form-floating mb-2">
-                            <input type="password" class="form-control" id="senhaRec" placeholder="">
+                        <div class="form-floating mb-3 input-group-custom">
+                            <input type="password" class="form-control glass-input" id="senhaRec" placeholder="">
                             <label for="senhaRec">Nova Senha</label>
+                            <div class="input-line"></div>
                         </div>
-                        <div class="form-floating mb-2">
-                            <input type="password" class="form-control" id="senhaRecConfirm" placeholder="">
+                        <div class="form-floating mb-2 input-group-custom">
+                            <input type="password" class="form-control glass-input" id="senhaRecConfirm" placeholder="">
                             <label for="senhaRecConfirm">Confirmar Nova Senha</label>
+                            <div class="input-line"></div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-outline-primary flex-fill">Enviar</button>
+                    <div class="modal-footer" style="border:0;">
+                        <button class="btn btn-outline-primary flex-fill cyber-btn-outline">
+                            <span>ENVIAR</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'Rajdhani', sans-serif;
+            overflow: hidden;
+            position: relative;
+            cursor: none;
+        }
 
-            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab') center/cover no-repeat;
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00f5ff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease, border-color 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.6);
+        }
 
-            backdrop-filter: blur(4px);
-            font-family: "Inter", "Segoe UI", sans-serif;
-            margin: 0;
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #00f5ff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.8);
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #00f5ff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0;
+            animation: trailFade 0.5s ease-out forwards;
+        }
+
+        @keyframes trailFade {
+            0% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+        }
+
+        .cursor.hover {
+            transform: scale(1.5);
+            border-color: #ff00e5;
+            box-shadow: 0 0 30px rgba(255, 0, 229, 0.8);
+        }
+
+        .cursor-dot.hover {
+            background: #ff00e5;
+            box-shadow: 0 0 15px rgba(255, 0, 229, 0.8);
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1d3a 50%, #0f1123 100%);
+            z-index: -1;
+        }
+
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #00f5ff, transparent);
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #7000ff, transparent);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #ff00e5, transparent);
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-50px, 50px) scale(0.9); }
         }
 
         .login-container {
-            width: 420px;
-            padding: 40px 35px;
-            background: rgba(255, 255, 255, 0.90);
-            border-radius: 18px;
-
-            box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(8px);
-
-            animation: fadeIn 0.5s ease;
+            width: 450px;
+            padding: 45px 40px;
+            background: rgba(10, 14, 39, 0.75);
+            border-radius: 24px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 80px rgba(0, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            position: relative;
+            animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
         }
 
-        h3 {
-            color: #2f3b4a;
-            letter-spacing: 1px;
+        .glow-effect {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00f5ff, #7000ff, #ff00e5, #00f5ff);
+            border-radius: 24px;
+            opacity: 0;
+            z-index: -1;
+            animation: glowPulse 3s ease-in-out infinite;
+            background-size: 300% 300%;
+            animation: glowRotate 4s linear infinite, glowPulse 2s ease-in-out infinite;
         }
 
-        .form-control {
-            background: #f4f6f8;
-            border: 1px solid #d0d7df;
-            transition: 0.2s;
-            border-radius: 8px;
+        @keyframes glowRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .form-control:focus {
-            border-color: #6c7a91;
-            box-shadow: 0 0 0 2px rgba(108, 122, 145, 0.25);
-            background: #ffffff;
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
         }
 
-        .btn-primary {
-            background: #2f3b4a !important;
-            border-color: #2f3b4a !important;
-            font-weight: 600;
-            border-radius: 8px;
-        }
-
-        .btn-primary:hover {
-            background: #1f2833 !important;
-            border-color: #1f2833 !important;
-        }
-
-        .btn-outline-secondary {
-            border-radius: 8px;
-            font-weight: 500;
-            color: #4a5868;
-            border-color: #b7c2cd;
-        }
-
-        .btn-outline-secondary:hover {
-            background: #e7ecf1;
-            color: #2f3b4a;
-            border-color: #a8b4c0;
-        }
-
-        .btn-outline-primary {
-            border-radius: 8px;
-            border-color: #2f3b4a;
-            color: #2f3b4a;
-            font-weight: 500;
-        }
-
-        .btn-outline-primary:hover {
-            background: #2f3b4a;
-            color: white;
-        }
-
-        .modal-content {
-            border-radius: 14px;
-            padding: 5px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .modal-header {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .modal-title {
-            font-weight: 600;
-            color: #2f3b4a;
-        }
-
-        .btn-success {
-            background: #2b7a48 !important;
-            border-color: #2b7a48 !important;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-
-        .btn-success:hover {
-            background: #1f5a36 !important;
-            border-color: #1f5a36 !important;
-        }
-
-        @keyframes fadeIn {
+        @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(30px) scale(0.95);
             }
-
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #00f5ff 0%, #7000ff 50%, #ff00e5 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 4px;
+            font-weight: 900;
+            text-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+        }
+
+        .input-group-custom {
+            position: relative;
+        }
+
+        .input-group-custom::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 14px;
+            padding: 2px;
+            background: linear-gradient(
+                45deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #00ff00,
+                #0000ff,
+                #4b0082,
+                #9400d3,
+                #ff0000
+            );
+            background-size: 400% 400%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: rainbowSpin 3s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rainbowSpin {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .input-group-custom:hover::before {
+            opacity: 0.6;
+        }
+
+        .input-group-custom:focus-within::before {
+            opacity: 1;
+            animation: rainbowSpin 1.5s linear infinite;
+        }
+
+        .glass-input {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(0, 255, 255, 0.2) !important;
+            color: #fff !important;
+            border-radius: 12px !important;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: transparent !important;
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.3) !important;
+            transform: translateY(-2px);
+        }
+
+        .glass-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-floating > label {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            color: #00f5ff;
+        }
+
+        .input-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00f5ff, #7000ff);
+            transition: width 0.4s ease;
+            border-radius: 2px;
+        }
+
+        .glass-input:focus ~ .input-line {
+            width: 100%;
+        }
+
+        .cyber-btn {
+            background: linear-gradient(135deg, #00f5ff 0%, #0088ff 100%) !important;
+            border: none !important;
+            border-radius: 12px !important;
+            font-weight: 700 !important;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+            padding: 14px !important;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 245, 255, 0.4);
+        }
+
+        .cyber-btn::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 14px;
+            padding: 3px;
+            background: linear-gradient(
+                45deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #00ff00,
+                #0000ff,
+                #4b0082,
+                #9400d3,
+                #ff0000
+            );
+            background-size: 400% 400%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+            animation: rainbowSpin 2s linear infinite;
+        }
+
+        .cyber-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 245, 255, 0.6);
+        }
+
+        .cyber-btn:hover::before {
+            animation: rainbowSpin 1s linear infinite;
+        }
+
+        .cyber-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+            animation: btnGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes btnGlow {
+            0%, 100% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
+        }
+
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(0, 255, 255, 0.3) !important;
+            color: #00f5ff !important;
+            border-radius: 12px !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: visible;
+        }
+
+        .glass-btn::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 14px;
+            padding: 2px;
+            background: linear-gradient(
+                45deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #00ff00,
+                #0000ff,
+                #4b0082,
+                #9400d3,
+                #ff0000
+            );
+            background-size: 400% 400%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+            opacity: 0;
+            animation: rainbowSpin 2.5s linear infinite;
+        }
+
+        .glass-btn:hover {
+            background: rgba(0, 245, 255, 0.15) !important;
+            border-color: #00f5ff !important;
+            color: #fff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 245, 255, 0.3);
+        }
+
+        .glass-btn:hover::before {
+            opacity: 0.8;
+            animation: rainbowSpin 1.2s linear infinite;
+        }
+
+        .futuristic-modal .modal-content {
+            background: rgba(10, 14, 39, 0.95) !important;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .futuristic-modal .modal-header {
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .futuristic-modal .modal-body {
+            background: transparent;
+        }
+
+        .futuristic-modal .modal-footer {
+            background: transparent;
+        }
+
+        .modal-backdrop.show {
+            opacity: 0.8;
+            background: #000;
+        }
+
+        .glass-close {
+            filter: invert(1) brightness(2);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .glass-close:hover {
+            opacity: 1;
+            transform: rotate(90deg);
+        }
+
+        .cyber-btn-outline {
+            background: transparent !important;
+            border: 2px solid #00f5ff !important;
+            color: #00f5ff !important;
+            border-radius: 12px !important;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+            padding: 12px !important;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: visible;
+        }
+
+        .cyber-btn-outline::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 14px;
+            padding: 3px;
+            background: linear-gradient(
+                45deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #00ff00,
+                #0000ff,
+                #4b0082,
+                #9400d3,
+                #ff0000
+            );
+            background-size: 400% 400%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+            opacity: 0;
+            animation: rainbowSpin 2s linear infinite;
+        }
+
+        .cyber-btn-outline::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cyber-btn-outline:hover {
+            background: rgba(0, 245, 255, 0.1) !important;
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .cyber-btn-outline:hover::before {
+            opacity: 1;
+            animation: rainbowSpin 1s linear infinite;
+        }
+
+        .cyber-btn-outline:hover::after {
+            left: 100%;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00f5ff, #7000ff);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                width: 90%;
+                padding: 35px 25px;
             }
         }
     </style>
-    {% include "script.html" %}
-    <script defer type="module" aria-modal="true" src="/js/login.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Cursor personalizado
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
+
+        const cursorDot = document.createElement('div');
+        cursorDot.classList.add('cursor-dot');
+        document.body.appendChild(cursorDot);
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+        let dotX = 0;
+        let dotY = 0;
+
+        // Atualizar posição do mouse
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Criar rastro
+            const trail = document.createElement('div');
+            trail.classList.add('cursor-trail');
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            document.body.appendChild(trail);
+
+            setTimeout(() => {
+                trail.remove();
+            }, 500);
+        });
+
+        // Animação suave do cursor
+        function animateCursor() {
+            // Cursor principal (com delay)
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            cursor.style.left = cursorX - 10 + 'px';
+            cursor.style.top = cursorY - 10 + 'px';
+
+            // Ponto central (mais rápido)
+            dotX += (mouseX - dotX) * 0.25;
+            dotY += (mouseY - dotY) * 0.25;
+            cursorDot.style.left = dotX - 3 + 'px';
+            cursorDot.style.top = dotY - 3 + 'px';
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Efeito hover em elementos clicáveis
+        const interactiveElements = document.querySelectorAll('button, input, a, .btn-close');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                cursorDot.classList.add('hover');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                cursorDot.classList.remove('hover');
+            });
+        });
+    </script>
 </body>
 
 </html>
